@@ -1,6 +1,6 @@
 #include "main.hpp"
 using namespace std;
-
+ 
 int main(int argc, char** argv) {
     struct addrinfo* hints = (addrinfo*)calloc(1, sizeof(addrinfo));
     struct addrinfo* host_info;
