@@ -38,7 +38,6 @@
 
 ### VisualStudioCode ###
 .vscode/*
-.vscode
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
@@ -49,3 +48,6 @@
 .history
 
 # End of https://www.gitignore.io/api/c++,visualstudiocode
+
+.conf
+.vscode
