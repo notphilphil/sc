@@ -90,12 +90,15 @@ void find_ipv6_addr(std::string* ip) {
 
         ifstream temp_conf;
         temp_conf.open("temp.conf");
+        if (!temp_conf.is_open()) 
+            // Temp file doesn't exist. This happens if the system call above somehow failed in its ` > temp.conf` part. Just exit? Try again?
+            safe_exit(true, "Temporary configuration file (temp.conf) failed to open, halp");
+        
         ifstream conf_file(".conf");
-        if (!conf_file.is_open()) {
+        if (!conf_file.is_open())
             /* Configuration file does not exist, make one by specifying truncate in mode (check
             http://www.cplusplus.com/reference/fstream/ifstream/open/ and https://stackoverflow.com/a/8836041/8161432 for more details) */
             conf_file.open(".conf", fstream::trunc | fstream::out);
-        }
         
         if (conf_file.is_open() && temp_conf.is_open()) {
             getline(conf_file, lines[0]);
